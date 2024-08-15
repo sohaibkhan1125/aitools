@@ -16,7 +16,7 @@ const Head = () => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div className="flex items-center justify-between w-full md:w-auto  ">
             <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-              <img src="/logo.svg" className="h-8" alt="Flowbite Logo" />
+              <img src="/logo.svg" className="h-7" alt="Flowbite Logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">AI Generator</span>
             </a>
             <div className="flex items-center space-x-3 rtl:space-x-reverse md:hidden">

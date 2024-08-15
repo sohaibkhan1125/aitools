@@ -244,6 +244,29 @@ export default [
            
         ]
     },
-    
+    {
+        name:'YouTube Keywords Generator',
+        desc:'This ai tool will help you to generate best keywords for your youtube videos.',
+        category:'YouTube',
+        icon:'https://cdn-icons-png.flaticon.com/128/14776/14776979.png',
+        aiPrompt:'Generate keywords for youtube video according to user given video title and description.',
+        slug:'youtube-keywords-generator',
+        form:[
+            
+            {
+                label:'Enter your video title',
+                field:'input',
+                name:'niche',
+                required:true
+            },
+            {
+                label:'Enter your video description',
+                field:'textarea',
+                name:'outline',
+
+            }
+           
+        ]
+    },
     
 ]

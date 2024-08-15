@@ -4,81 +4,62 @@ import Footer from '../Footer';
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <section>
       <TopMenu />
-      <h1 className='text-center text-3xl font-bold mt-5'>Contact Us</h1>
-      <main className="flex-grow flex items-center justify-center py-10">
-        <form
-          id="fs-frm"
-          name="simple-contact-form"
-          acceptCharset="utf-8"
-          action="https://formspree.io/f/mblrjkrg"
-          method="post"
-          className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md"
-        >
-          <fieldset id="fs-frm-inputs" className="space-y-6">
-            <div>
-              <label htmlFor="full-name" className="block text-sm font-medium text-gray-700">Full Name</label>
-              <input
-                type="text"
-                name="name"
-                id="full-name"
-                placeholder="First and Last"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">Email Address</label>
-              <input
-                type="email"
-                name="_replyto"
-                id="email-address"
-                placeholder="email@domain.tld"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label htmlFor="email-subject" className="block text-sm font-medium text-gray-700">Subject</label>
-              <input
-                type="text"
-                name="_subject"
-                id="email-subject"
-                placeholder="Subject"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-              <textarea
-                name="message"
-                id="message"
-                placeholder="Your message here"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              ></textarea>
-            </div>
-            <input
-              type="hidden"
-              name="_to"
-              value="harrisonoriahi@gmail.com"
-            />
-          </fieldset>
-          <div className="mt-6">
-            <button
-              type="submit"
-              className="w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </main>
+      <div className='p-5 mb-20 mt-5'>
+        <h1 className='text-2xl font-semibold'>Contact Us!</h1>
+        <h2 style={{ textAlign: 'center' }} className='text-2xl font-semibold'>
+          Welcome to <span id="W_Name">AI Content Generator</span>!
+        </h2>
+
+        <p style={{ fontSize: '17px' }}>
+          Please email us if you have any queries about the site, advertising, or anything else.
+        </p>
+
+        <div style={{ textAlign: 'center' }}>
+          <img
+            alt="contact-us"
+            height="87"
+            loading="lazy"
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcLPYLvBhQspUwGqwYdt1VcsaLeNn5tGh2EycKOIFQJN3UbGNdtuxqjZyArvangz-kgxJPl_li2g2T0G2ZvsjC7YDC6mbqPaG9dSw1uzK-r6ekNQfcTzM-bM7CKnnygPDhFNZ-E4Gipqo/w320-h87-rw/email-us-1805514__480.webp"
+            width="320"
+          />
+
+          <p style={{ marginLeft: '25%' }}>
+            <i className="fas fa-envelope-open-text" style={{ color: '#2c3e50', fontSize: '20px' }}></i>
+            <b>
+              <i>
+                <span id="W_Email">
+                  <a href="mailto:admin@aicontentgenerator.com">admin@aicontentgenerator.com</a>
+                </span>
+              </i>
+            </b>
+            <br />
+            <i className="fab fa-whatsapp-square" style={{ color: '#3edc81', fontSize: '20px' }}></i>
+            <b>
+              <span id="W_whatsapp">
+                <a href="tel:"></a>
+              </span>
+            </b>
+            <br />
+          </p>
+
+          <h3 style={{ color: '#3e005d' }}>We will revert you as soon as possible...!</h3>
+          <p style={{ color: '#3e005d', textAlign: 'center' }}>
+            Thank you for contacting us! <br />
+            <b>Have a great day</b>
+          </p>
+          <span style={{ fontSize: '1px', opacity: 0 }}>
+            This page is generated with the help of{' '}
+            <a href="https://www.blogearns.com/2021/06/free-contact-us-page-generator.html" style={{ color: 'inherit' }}>
+              Contact Us Page Generator
+            </a>
+          </span>
+        </div>
+      </div>
       <Footer />
-    </div>
+    </section>
   );
-};
+}
 
 export default Page;
