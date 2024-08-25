@@ -269,4 +269,75 @@ export default [
         ]
     },
     
+    {
+        name:'YouTube Video Title Generator',
+        desc:'This ai tool will help you to generate your youtube video title according to your niche.',
+        category:'YouTube',
+        icon:'https://cdn-icons-png.flaticon.com/128/4186/4186534.png',
+        aiPrompt:'Generate youtube video title according to user video details and keywords. Also provide 10 type of titles.',
+        slug:'youtube-title-generator',
+        form:[
+            
+            {
+                label:'Enter your video detail',
+                field:'input',
+                name:'niche',
+                required:true
+            },
+            {
+                label:'Enter your video keywords',
+                field:'textarea',
+                name:'outline',
+
+            }
+           
+        ]
+    },
+
+    {
+        name:'YouTube Description Rewriter',
+        desc:'This ai tool will help you to generate hashatgs for your youtube video according to your data.',
+        category:'YouTube',
+        icon:'https://cdn-icons-png.flaticon.com/128/3321/3321713.png',
+        aiPrompt:'Rewrite user entered youtube video description and provide professional description.',
+        slug:'youtube-description-rewriter',
+        form:[
+            
+            {
+                label:'Enter your video description',
+                field:'input',
+                name:'niche',
+                required:true
+            },
+           
+            
+           
+        ]
+    },
+
+    {
+        name:'YouTube Video Hashtags Generator',
+        desc:'This ai tool will help you to extract any youtube video tags within seconds.',
+        category:'YouTube',
+        icon:'https://cdn-icons-png.flaticon.com/128/4264/4264997.png',
+        aiPrompt:'Generate hashtags for youtube according to user enterted video title and description.',
+        slug:'youtube-hashtags-generator',
+        form:[
+            
+            {
+                label:'Enter your video title',
+                field:'input',
+                name:'niche',
+                required:true
+            },
+            {
+                label:'Enter your video description',
+                field:'textarea',
+                name:'outline',
+
+            }
+           
+        ]
+    },
+    
 ]
