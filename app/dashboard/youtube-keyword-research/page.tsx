@@ -101,9 +101,6 @@ function KeywordResearch() {
                 <p className={getCompetitionColor(item.competition_score)}>
                   Competition Score: <span className="font-medium">{item.competition_score}</span>
                 </p>
-                <p>Difficulty: <span className="font-medium">{item.difficulty}</span></p>
-                <p>Overall Score: <span className="font-medium">{item.overallscore}</span></p>
-                <p>Last Update: <span className="font-medium">{item.last_update}</span></p>
                 <button
                   onClick={() => copyToClipboard(item.keyword)}
                   className="absolute bottom-2 right-2 p-1 text-gray-600 hover:text-blue-500"
