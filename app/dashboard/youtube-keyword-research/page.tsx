@@ -5,7 +5,7 @@ import { FiCopy } from 'react-icons/fi'; // Import the copy icon from react-icon
 
 function KeywordResearch() {
   const [keyword, setKeyword] = useState('');
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<any>(null); // Use 'any' or define a specific type for results
 
   const handleSearch = async () => {
     try {
@@ -32,14 +32,14 @@ function KeywordResearch() {
   };
 
   // Function to determine the color based on competition score
-  const getCompetitionColor = (score) => {
+  const getCompetitionColor = (score: number) => { // Specify 'number' type for score
     if (score < 50) return 'text-green-600';  // Low competition
     if (score < 80) return 'text-orange-600'; // Medium competition
     return 'text-red-600';                     // High competition
   };
 
   // Function to copy text to clipboard
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text: string) => { // Specify 'string' type for text
     navigator.clipboard.writeText(text).then(() => {
       alert(`${text} copied to clipboard!`); // Alert message after copying
     }).catch((err) => {
@@ -49,11 +49,12 @@ function KeywordResearch() {
 
   return (
     <div className="container mx-auto p-5">
-        <Link href={'/dashboard'}>
-            <button className='flex bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white mb-10'>
-                <img className='w-5 mt-[1px]' src="https://cdn-icons-png.flaticon.com/128/8213/8213500.png" alt="" />
-                Home</button>
-                </Link>
+      <Link href={'/dashboard'}>
+        <button className='flex bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded text-white mb-10'>
+          <img className='w-5 mt-[1px]' src="https://cdn-icons-png.flaticon.com/128/8213/8213500.png" alt="" />
+          Home
+        </button>
+      </Link>
       <h1 className="text-2xl font-bold">YouTube Keyword Research</h1>
       <input
         type="text"
@@ -71,7 +72,7 @@ function KeywordResearch() {
           <h2 className="text-xl">Results for: <span className="font-semibold">{keyword}</span></h2>
           <div className="mt-4">
             <h3 className="text-lg font-semibold">Exact Keyword</h3>
-            {results.exact_keyword.map((item, index) => (
+            {results.exact_keyword.map((item: any, index: number) => ( // Define type for item if needed
               <div key={index} className="border p-4 rounded mb-2 bg-gray-50 relative">
                 <h4 className="font-semibold">{item.keyword}</h4>
                 <p>Monthly Searches: <span className="font-medium">{item.monthlysearch}</span></p>
@@ -93,7 +94,7 @@ function KeywordResearch() {
 
           <div className="mt-4">
             <h3 className="text-lg font-semibold">Related Keywords</h3>
-            {results.related_keywords.map((item, index) => (
+            {results.related_keywords.map((item: any, index: number) => ( // Define type for item if needed
               <div key={index} className="border p-4 rounded mb-2 bg-gray-50 relative">
                 <h4 className="font-semibold">{item.keyword}</h4>
                 <p>Monthly Searches: <span className="font-medium">{item.monthlysearch}</span></p>
