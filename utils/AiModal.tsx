@@ -1,17 +1,16 @@
 import * as https from 'https';
 
-interface GenerationConfig {
-    temperature: number;
-    top_k: number;
-    top_p: number;
-    max_tokens: number;
-    web_access: boolean;
-}
-
-interface Message {
-    role: string;
-    content: string;
-}
+const options = {
+    method: 'POST',
+    hostname: 'open-ai21.p.rapidapi.com',
+    port: null,
+    path: '/chatgpt',
+    headers: {
+        'x-rapidapi-key': 'b9b276d0c1msh822603b0c726babp1e9c4djsn4fbc5f965e78',
+        'x-rapidapi-host': 'open-ai21.p.rapidapi.com',
+        'Content-Type': 'application/json'
+    }
+};
 
 interface ChatResponse {
     result: string;
@@ -19,27 +18,7 @@ interface ChatResponse {
     server_code: number;
 }
 
-const options = {
-    method: 'POST',
-    hostname: 'chatgpt-42.p.rapidapi.com',
-    port: null,
-    path: '/conversationgpt4-2',
-    headers: {
-        'x-rapidapi-key': 'b9b276d0c1msh822603b0c726babp1e9c4djsn4fbc5f965e78',
-        'x-rapidapi-host': 'chatgpt-42.p.rapidapi.com',
-        'Content-Type': 'application/json'
-    }
-};
-
-const generationConfig: GenerationConfig = {
-    temperature: 0.2,
-    top_k: 5,
-    top_p: 0.9,
-    max_tokens: 806,
-    web_access: false
-};
-
-export const chatSession = (userMessage: string, history: Message[] = []): Promise<ChatResponse> => {
+export const chatSession = (userMessage: string): Promise<ChatResponse> => {
     return new Promise((resolve, reject) => {
         const req = https.request(options, (res) => {
             const chunks: Uint8Array[] = [];
@@ -51,27 +30,49 @@ export const chatSession = (userMessage: string, history: Message[] = []): Promi
             res.on('end', () => {
                 const body = Buffer.concat(chunks);
                 try {
-                    const response: ChatResponse = JSON.parse(body.toString());
-                    resolve(response);
+                    const response = JSON.parse(body.toString());
+
+                    // Check for different possible response structures
+                    if (response && response.choices && response.choices.length > 0) {
+                        resolve({
+                            result: response.choices[0].message.content,
+                            status: true,
+                            server_code: res.statusCode || 500
+                        });
+                    } else if (response && response.result) {
+                        resolve({
+                            result: response.result,
+                            status: true,
+                            server_code: res.statusCode || 500
+                        });
+                    } else if (response && response.data) {
+                        resolve({
+                            result: response.data.message || "No message found",
+                            status: true,
+                            server_code: res.statusCode || 500
+                        });
+                    } else {
+                        reject(new Error('Invalid response structure'));
+                    }
                 } catch (error) {
-                    reject(error);
+                    reject(new Error('Failed to parse response: ' + error.message));
                 }
             });
         });
 
         req.on('error', (error) => {
-            reject(error);
+            reject(new Error('Request failed: ' + error.message));
         });
 
+        // Writing the request with the user's message
         req.write(JSON.stringify({
             messages: [
-                ...history,
                 {
                     role: 'user',
                     content: userMessage
                 }
             ],
-            ...generationConfig
+            web_access: false
         }));
 
         req.end();
